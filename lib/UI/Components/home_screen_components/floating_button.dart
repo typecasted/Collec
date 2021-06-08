@@ -1,7 +1,5 @@
-import 'package:collec/utils/constants.dart';
 import 'package:collec/utils/size_config.dart';
 import 'package:flutter/material.dart';
-
 import 'dialog_box.dart';
 
 class FloatingButton extends StatelessWidget {

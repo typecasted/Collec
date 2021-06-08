@@ -16,10 +16,15 @@ class CollectionAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.white,
-            size: SizeConfig().height(context) * 0.03,
+          GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: SizeConfig().height(context) * 0.03,
+            ),
           ),
           Text(
             // TODO : put collection name
@@ -28,11 +33,8 @@ class CollectionAppBar extends StatelessWidget {
               fontSize: SizeConfig().height(context) * 0.035,
             ),
           ),
-          Icon(
-            Icons.add_circle_outline_rounded,
-            color: Colors.blueAccent,
-            size: SizeConfig().height(context) * 0.03,
-          )
+
+          Container(),
         ],
       ),
     );
