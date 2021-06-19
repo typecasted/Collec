@@ -1,5 +1,3 @@
-
-
 import 'package:collec/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +10,10 @@ class PreviewPhotoPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: SizeConfig().height(context) * 0.025),
+        padding: EdgeInsets.symmetric(vertical: SC().h(context) * 0.025),
         child: Container(
           child: PageView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: 3,
               itemBuilder: (context, index) {
                 return Padding(
@@ -24,7 +22,7 @@ class PreviewPhotoPageView extends StatelessWidget {
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.blueAccent),
                   ),
                 );

@@ -1,12 +1,12 @@
 
 import 'package:flutter/cupertino.dart';
 
-class SizeConfig{
-
-  height(BuildContext context){
+class SC{
+  h(BuildContext context){
     return MediaQuery.of(context).size.height;
   }
-  width(BuildContext context){
+  w(BuildContext context){
     return MediaQuery.of(context).size.width;
   }
+
 }

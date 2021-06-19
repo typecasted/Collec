@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.collec.collec">
    <application
-        android:label="collec"
+        android:label="Collec"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
