@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collec/UI/Components/home_screen_components/appbar_home_screen.dart';
 import 'package:collec/UI/Components/home_screen_components/floating_button.dart';
 import 'package:collec/UI/Components/home_screen_components/search_bar.dart';
 import 'package:collec/utils/size_config.dart';
+import 'package:collec/utils/user_info.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +14,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    UsersInfo().userInfo.write('loggedIn', true);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +37,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   vertical: SC().h(context) * 0.02,
                   horizontal: SC().w(context) * 0.02,
                 ),
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: _fireStore
+                      .collection('users')
+                      .doc(UsersInfo().userInfo.read('email'))
+                      .collection('collections')
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                     return Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: SC().h(context) * 0.02,
@@ -39,11 +56,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Container(
                         height: SC().h(context) * 0.3,
-                        // width: SizeConfig().width(context) * 0.5,
                         decoration: BoxDecoration(
                           color: Colors.blueAccent,
                           borderRadius: BorderRadius.circular(20),
                         ),
+                        child: Text('${snapshot.data.docs}'),
                       ),
                     );
                   },
@@ -56,3 +73,19 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+// Padding(
+// padding: EdgeInsets.symmetric(
+// vertical: SC().h(context) * 0.02,
+// horizontal: SC().w(context) * 0.05,
+// ),
+// child: Container(
+// height: SC().h(context) * 0.3,
+// decoration: BoxDecoration(
+// color: Colors.blueAccent,
+// borderRadius: BorderRadius.circular(20),
+// ),
+// ),
+// )
+
+

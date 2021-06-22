@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collec/UI/Screens/home_screen.dart';
+import 'package:collec/UI/Screens/set_profile_picture_screen.dart';
+import 'package:collec/UI/Screens/start_collection_screen.dart';
 import 'package:collec/utils/constants.dart';
 import 'package:collec/utils/size_config.dart';
 import 'package:collec/utils/user_info.dart';
@@ -23,7 +25,8 @@ class AuthService {
           email: email, password: password);
 
       // ...Implement fireStore database...
-      _fireStore.collection('users').add(
+
+      _fireStore.collection('users').doc(email).set(
         {
           'username': userName,
           'email': email,
@@ -33,10 +36,9 @@ class AuthService {
       // ...Saving user's information in device...
       UsersInfo().userInfo.write('username', userName);
       UsersInfo().userInfo.write('email', email);
-      UsersInfo().userInfo.write('loggedIn', true);
 
       // ...Set navigation to other screen...
-      Get.off(HomeScreen());
+      Get.off(SetProfilePicScreen());
     } on FirebaseAuthException catch (e) {
       print(e.code);
       authExceptions(e: e, context: context);
@@ -65,7 +67,6 @@ class AuthService {
             // ...Saving user's information in device...
             UsersInfo().userInfo.write('username', element['username']);
             UsersInfo().userInfo.write('email', element['email']);
-            UsersInfo().userInfo.write('loggedIn', true);
           },
         );
 
@@ -73,14 +74,14 @@ class AuthService {
       });
 
       // ...Set navigation to other screen...
-      Get.off(HomeScreen());
+      Get.off(StartCollectionScreen());
     } on FirebaseAuthException catch (e) {
       print(e.code);
       authExceptions(e: e, context: context);
     }
   }
 
-  signInWithGoogle() async {
+  signInWithGoogle({@required bool signingIn}) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
 
@@ -111,7 +112,7 @@ class AuthService {
             .get();
 
         if (query.docs.isEmpty) {
-          _fireStore.collection('users').add(
+          _fireStore.collection('users').doc(user.email).set(
             {
               'username': user.displayName,
               'email': user.email,
@@ -121,24 +122,26 @@ class AuthService {
           // ...Saving user's information in device...
           UsersInfo().userInfo.write('username', user.displayName);
           UsersInfo().userInfo.write('email', user.email);
-          UsersInfo().userInfo.write('loggedIn', true);
+
+          // ...Set navigation to other screen...
+          Get.off(SetProfilePicScreen());
         } else {
           query.docs.forEach(
             (element) {
-
               // ...Saving user's information in device...
               UsersInfo().userInfo.write('username', element['username']);
               UsersInfo().userInfo.write('email', element['email']);
-              UsersInfo().userInfo.write('loggedIn', true);
+
+              // ...Set navigation to other screen...
+              Get.off(StartCollectionScreen());
             },
           );
         }
 
-        // ...Set navigation to other screen...
-        Get.off(HomeScreen());
+
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
-          // handle the error here
+          print('!!!!!!!!account-exists-with-different-credential!!!!!!!!');
         } else if (e.code == 'invalid-credential') {
           // handle the error here
         }

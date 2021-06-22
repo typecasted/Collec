@@ -88,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
           GestureDetector(
-            onTap: () => AuthService().signInWithGoogle(),
+            onTap: () => AuthService().signInWithGoogle(signingIn: false),
             child: SignInUpWithGoogleButton(
               message: 'Sign up with Google',
             ),
