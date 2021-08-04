@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collec/UI/Screens/home_screen.dart';
-import 'package:collec/UI/Screens/set_profile_picture_screen.dart';
-import 'package:collec/UI/Screens/start_collection_screen.dart';
+import 'package:collec/Screens/home_screen.dart';
+import 'package:collec/Screens/set_profile_picture_screen.dart';
+import 'package:collec/Screens/start_collection_screen.dart';
 import 'package:collec/utils/constants.dart';
 import 'package:collec/utils/size_config.dart';
 import 'package:collec/utils/user_info.dart';

@@ -1,4 +1,4 @@
-import 'package:collec/UI/Screens/signin_screen.dart';
+import 'package:collec/Screens/signin_screen.dart';
 import 'package:collec/utils/constants.dart';
 import 'package:collec/utils/size_config.dart';
 import 'package:collec/utils/user_info.dart';

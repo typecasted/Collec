@@ -1,6 +1,6 @@
-import 'package:collec/UI/Components/sign_in_up_screen_components/other_components.dart';
-import 'package:collec/UI/Components/sign_in_up_screen_components/text_field.dart';
-import 'package:collec/UI/Screens/signup_screen.dart';
+import 'package:collec/Widgets/sign_in_up_screen_components/other_components.dart';
+import 'package:collec/Widgets/sign_in_up_screen_components/text_field.dart';
+import 'package:collec/Screens/signup_screen.dart';
 import 'package:collec/utils/auth_services.dart';
 import 'package:collec/utils/constants.dart';
 import 'package:collec/utils/size_config.dart';

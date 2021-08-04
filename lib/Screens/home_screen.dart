@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collec/UI/Components/home_screen_components/appbar_home_screen.dart';
-import 'package:collec/UI/Components/home_screen_components/floating_button.dart';
-import 'package:collec/UI/Components/home_screen_components/search_bar.dart';
+import 'package:collec/Widgets/home_screen_components/appbar_home_screen.dart';
+import 'package:collec/Widgets/home_screen_components/floating_button.dart';
+import 'package:collec/Widgets/home_screen_components/search_bar.dart';
 import 'package:collec/utils/size_config.dart';
 import 'package:collec/utils/user_info.dart';
 import 'package:flutter/material.dart';

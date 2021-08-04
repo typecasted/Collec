@@ -1,6 +1,6 @@
-import 'package:collec/UI/Screens/collection_screen.dart';
-import 'package:collec/UI/Screens/home_screen.dart';
-import 'package:collec/UI/Screens/signin_screen.dart';
+import 'package:collec/Screens/collection_screen.dart';
+import 'package:collec/Screens/home_screen.dart';
+import 'package:collec/Screens/signin_screen.dart';
 import 'package:collec/utils/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';

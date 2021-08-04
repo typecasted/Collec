@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:collec/UI/Screens/home_screen.dart';
+import 'package:collec/Screens/home_screen.dart';
 import 'package:collec/utils/constants.dart';
 import 'package:collec/utils/database_mathods.dart';
 import 'package:collec/utils/size_config.dart';

@@ -1,4 +1,4 @@
-import 'package:collec/UI/Components/collection_screen_components/appbars.dart';
+import 'package:collec/Widgets/collection_screen_components/appbars.dart';
 import 'package:collec/utils/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
